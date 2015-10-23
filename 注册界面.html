@@ -1,0 +1,201 @@
+<html>
+<head>
+<title>注册页面</title>
+<meta charset="utf-8">
+<script language="javascript"> 
+function checkname(){ 
+var div = document.getElementById("div1"); 
+div.innerHTML = ""; 
+var name1 = document.form1.text1.value; 
+if (name1 == "") { 
+div.innerHTML = "姓名不能为空！"; 
+document.form1.text1.focus(); 
+return false; 
+} 
+if (name1.length < 4 || name1.length > 16) { 
+div.innerHTML = "姓名输入的长度4-16个字符！"; 
+document.form1.text1.select(); 
+return false; 
+} 
+var charname1 = name1.toLowerCase(); 
+for (var i = 0; i < name1.length; i++) { 
+var charname = charname1.charAt(i); 
+if (!(charname >= 0 && charname <= 9) && (!(charname >= 'a' && charname <= 'z')) && (charname != '_')) { 
+div.innerHTML = "姓名包含非法字母，只能包含字母，数字，和下划线"; 
+document.form1.text1.select(); 
+return false; 
+} 
+} 
+return true;
+
+}
+
+function checkpassword(){ 
+var div = document.getElementById("div2"); 
+div.innerHTML = ""; 
+var password = document.form1.text2.value; 
+if (password == "") { 
+div.innerHTML = "密码不位空！"; 
+document.form1.text2.focus(); 
+return false; 
+} 
+if (password.length < 4 || password.length > 12) { 
+div.innerHTML = "密码长度4-12位"; 
+document.form1.text2.select(); 
+return false; 
+} 
+return true; 
+}
+
+function checkrepassword(){ 
+var div = document.getElementById("div3"); 
+div.innerHTML = ""; 
+var password = document.form1.text2.value; 
+var repass = document.form1.text3.value; 
+if (repass == "") { 
+div.innerHTML = "密码不位空！"; 
+document.form1.text3.focus(); 
+return false; 
+} 
+if (password != repass) { 
+div.innerHTML = "输入密码和确认密码长度不一致"; 
+document.form1.text3.select(); 
+return false; 
+} 
+return true; 
+}
+
+function checkEmail(){ 
+var div = document.getElementById("div4"); 
+div.innerHTML = ""; 
+var email = document.form1.text5.value; 
+var sw = email.indexOf("@", 0); 
+var sw1 = email.indexOf(".", 0); 
+var tt = sw1 - sw; 
+if (email.length == 0) { 
+div.innerHTML = "电子邮件不能位空"; 
+document.form1.text5.focus(); 
+return false; 
+} 
+if (email.indexOf("@", 0) == -1) { 
+div.innerHTML = "电子邮件格式不正确，必须包含@符号！"; 
+document.form1.text5.select(); 
+return false; 
+} 
+if (email.indexOf(".", 0) == -1) { 
+div.innerHTML = "电子邮件格式不正确，必须包含.符号!"; 
+document.form1.text5.select(); 
+return false; 
+} 
+if (tt == 1) { 
+div.innerHTML = "邮件格式不对。@和.不可以挨着！"; 
+document.form1.text5.select(); 
+return false; 
+} 
+if (sw > sw1) { 
+div.innerHTML = "电子邮件格式不正确，@符号必须在.之前"; 
+document.form1.text5.select(); 
+return false; 
+} 
+else { 
+return true; 
+}
+
+return ture; 
+}
+
+function check(){ 
+if (checkname() && checkpassword() && checkrepassword() && checkEmail()) { 
+return true; 
+} 
+else { 
+return false; 
+} 
+} 
+</script> 
+<style type="text/css">
+body{font-size: 12px;background-image:url(112233.jpg);background-repeat:repeat;margin: 150px;}
+td{font-size: 12px;}
+</style>
+</head>
+<body>
+<table border="0" cellspacing="0" cellpadding="0" width="100%" height="100%">
+  <tbody>
+  <tr>
+    <td valign="center" align="middle">
+      <table border="0" cellspacing="0" cellpadding="0" width="563" align="center">
+        <tbody>
+        <tr>
+          <td height="393" background="五角星.jpg">
+            <table border="0" cellspacing="0" cellpadding="0" width="563">
+              <tbody>
+              <tr>
+                <td height="60" width="180">&nbsp;</td>
+                <td height="60" width="183">&nbsp;</td>
+                <td height="60" width="200">&nbsp;</td></tr>
+              <tr>
+                <td height="180" width="180">&nbsp;</td>
+                <td height="180" valign="center" width="183" align="left">
+                  <table border="0" cellspacing="0" cellpadding="0" width="183">
+                    <tbody>
+                    <tr>
+                      <td height="35" width="153" align="left">
+                        <form id="form1" method="post" name="form1" action="" onsubmit="return check()">
+                        <table border="0" cellspacing="0" cellpadding="0" width="183">
+                          <tbody>
+                          <tr>
+                            <td height="35" width="50" align="centre">用户名：</td>
+                            <div id="div1" style="display:inline"> 
+                            <td height="35" width="133" align="left"><input style="border:#7f9db9 1px solid; font-size: 18px; " input id="text1" type="text" name="text1" onblur="check()"></td></tr>
+                          <tr>
+                            <td height="35" width="50" align="left">密码：</td>
+                            <div id="div2" style="display:inline"> 
+                            <td height="35" width="133" align="left"><input style="border: #7f9db9 1px solid;  font-size: 18px; " input id="text2" type="password" name="text2" onblur="check()">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td height="35" width="50" align="left">确认密码：</td>
+                            <div id="div3" style="display:inline"> 
+                            <td height="35" width="133" align="left">
+                              <table border="0" cellspacing="0" cellpadding="0" width="133">
+                                <tbody>
+                                <tr>
+                                <td height="35" width="80"><input style="border: #7f9db9 1px solid;  font-size: 18px; " input id="text3" type="password" name="text3" onblur="check()"></td>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                          <tr>
+                            <td height="35" width="50" align="right">&nbsp;</td>
+                            <td height="35" width="133" align="left">
+                              <input input type="submit" value="提交" name="tect6"><input type="reset" value="重置" name="text7"border="0" align="absMiddle"  width="64" height="30" type="image" >
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+                <td height="180" width="200">&nbsp;</td></tr>
+              <tr>
+                <td height="153" width="180">&nbsp;</td>
+                <td height="153" width="183">&nbsp;</td>
+                <td height="153" width="200">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
